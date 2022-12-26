@@ -4,8 +4,14 @@ import { useState } from "react"
 import imagemPrincipal from './assets/login.png'
 
 import './ModalCadastroUsuario.css'
+import axios from "axios"
 
-const ModalCadastroUsuario = () => {
+interface PropsModalCadastroUsuario {
+    aberta: boolean
+    aoFechar: () => void
+}
+
+const ModalCadastroUsuario = ({ aberta, aoFechar }: PropsModalCadastroUsuario) => {
 
     const [nome, setNome] = useState('')
     const [email, setEmail] = useState('')
@@ -25,60 +31,79 @@ const ModalCadastroUsuario = () => {
             cep,
             complemento
         }
+
+        axios.post('http://localhost:8000/public/registrar', usuario)
+            .then(() => {
+
+                alert('Usuário foi cadastrado com sucesso!')
+                setNome('')
+                setEmail('')
+                setEndereco('')
+                setComplemento('')
+                setCep('')
+                setSenha('')
+                setSenhaConfirmada('')
+                aoFechar()
+
+            })
+            .catch(() => {
+                alert('Ops algo deu errado!')
+            })
+
         console.log(usuario)
         alert('Usuário foi cadastrado com sucesso!')
     }
 
-    return (<AbModal 
-        titulo="Cadastrar" 
-        aberta={true}
-        aoFechar={() => console.log('fecha ai')}    
+    return (<AbModal
+        titulo="Cadastrar"
+        aberta={aberta}
+        aoFechar={aoFechar}
     >
         <section className="corpoModalCadastro">
             <figure>
                 <img src={imagemPrincipal} alt="Pessoa segurando uma chave na frente de uma tela de computador que está exibindo uma fechadura" />
             </figure>
             <form onSubmit={aoSubmeterFormular}>
-                <AbCampoTexto 
+                <AbCampoTexto
                     label="Nome"
                     value={nome}
                     onChange={setNome}
                 />
-                <AbCampoTexto 
+                <AbCampoTexto
                     label="E-mail"
                     value={email}
                     onChange={setEmail}
                     type="email"
                 />
-                <AbCampoTexto 
+                <AbCampoTexto
                     label="Endereço"
                     value={endereco}
                     onChange={setEndereco}
                 />
-                <AbCampoTexto 
+                <AbCampoTexto
                     label="Complemento"
                     value={complemento}
                     onChange={setComplemento}
                 />
-                <AbCampoTexto 
+                <AbCampoTexto
                     label="CEP"
                     value={cep}
                     onChange={setCep}
                 />
-                <AbCampoTexto 
+                <AbCampoTexto
                     label="Senha"
                     value={senha}
                     onChange={setSenha}
                     type="password"
                 />
-                <AbCampoTexto 
+                <AbCampoTexto
                     label="Confirmação da senha"
                     value={senhaConfirmada}
                     onChange={setSenhaConfirmada}
                     type="password"
                 />
                 <div className="acoes">
-                    <AbBotao texto="Cadastrar"/>
+                    <AbBotao texto="Cadastrar" />
                 </div>
             </form>
         </section>

@@ -6,11 +6,12 @@ hr {
     background-color: var(--branco);
     padding: 1em;
     background: #F9F9F9;
+    background-image: linear-gradient(45deg, rgb(0, 0, 0), rgb(24, 54, 66));
 }
 
 .lista-rodape {
     display: none;
-    border-left: 1px solid #858585;
+    border-left: 1px solid #D2691E;
     padding-left: 20px;
 }
 
@@ -33,18 +34,21 @@ hr {
     .lista-rodape__link {
         text-decoration: none;
         margin-left: 0.6em;
-        color: #474646;
+        color: #ffffff;
     }
+
+    
 
     .lista-rodape__titulo {
         font-weight: 400;
         font-size: 14px;
         line-height: 21px;
-        color: #858585;
+        color: #D2691E;
     }
 
     .rodape__titulo {
         font-size: 24px;
+        color: #D2691E;
     }
 }
 

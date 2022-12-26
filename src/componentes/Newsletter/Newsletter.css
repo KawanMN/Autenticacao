@@ -3,7 +3,8 @@
     justify-content: center;
     align-items: center;
     padding: 64px 0;
-    color: #002F52;
+    color: #D2691E;
+    background-color: rgb(249, 249, 249);
 }
 
 .Newsletter h6 {

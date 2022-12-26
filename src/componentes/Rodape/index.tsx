@@ -2,9 +2,9 @@ import './Rodape.css'
 
 const Rodape = () => {
     return (<footer className="rodape">
-        <h2 className="rodape__titulo">Grupo Alura</h2>
+        <h2 className="rodape__titulo"><strong>Grupo Alura</strong></h2>
         <ul className="lista-rodape">
-            <li className="lista-rodape__titulo">Educação</li>
+            <li className="lista-rodape__titulo"><strong>Educação</strong></li>
             <li className="lista-rodape__item">
                 <img src="/imagens/CasaDoCodigo.svg" alt="Logo da casa do código" />
                 <a href="#!" className="lista-rodape__link">Casa do código</a>
@@ -16,7 +16,7 @@ const Rodape = () => {
         </ul>
 
         <ul className="lista-rodape">
-            <li className="lista-rodape__titulo">Educação online</li>
+            <li className="lista-rodape__titulo"><strong>Educação online</strong></li>
             <li className="lista-rodape__item">
                 <img src="/imagens/Alura.svg" alt="Logo da Alura" />
                 <a href="#!" className="lista-rodape__link">Alura</a>
@@ -48,7 +48,7 @@ const Rodape = () => {
         </ul>
 
         <ul className="lista-rodape">
-            <li className="lista-rodape__titulo">Comunidade</li>
+            <li className="lista-rodape__titulo"><strong>Comunidade</strong></li>
             <li className="lista-rodape__item">
                 <img src="/imagens/HipstersTech.svg" alt="Logo do Hipsters ponto Tech" />
                 <a href="#!" className="lista-rodape__link">Hipsters ponto Tech</a>

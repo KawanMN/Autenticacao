@@ -7,7 +7,7 @@ const Newsletter = () => {
     return (<section className='Newsletter'>
         <div>
             <h6>Fique por dentro das novidades!</h6>
-            <p>Atualizações de e-books, novos livros, promoções e outros.</p>
+            <p><strong>Atualizações de e-books, novos livros, promoções e outros.</strong></p>
         </div>
         <form>
             <AbCampoTexto 

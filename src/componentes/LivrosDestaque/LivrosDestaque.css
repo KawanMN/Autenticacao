@@ -4,6 +4,7 @@
     align-items: center;
     background: #EBECEE;
     padding: 48px 0;
+    background-color: #ffffff;
 }
 
 .LivrosDestaque ul.livros {
@@ -32,11 +33,12 @@
 .LivrosDestaque .selecionado-detalhes {
     width: 350px;
     max-width: 100%;
+    
 }
 .LivrosDestaque .selecionado-detalhes h5 {
     font-weight: 700;
     font-size: 32px;
-    color: #EB9B00;
+    color: #D2691E;
     margin-top: 0;
     margin-bottom: 16px;
 }
