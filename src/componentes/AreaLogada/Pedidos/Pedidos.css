@@ -13,3 +13,17 @@
     border-bottom: 1px solid #002f52;
     padding: 12px;
 }
+.botao {
+    background-color: black;
+    width: 50%;
+    border-bottom: 1px solid white;
+    border-radius: 30px;
+    padding: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.botao:hover {
+    transform: scale(1.05);
+}
+
