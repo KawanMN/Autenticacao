@@ -1,18 +1,18 @@
 import { Route, Routes } from "react-router-dom"
+import AreaLogada from "../paginas/AreaLogada"
 import Home from "../paginas/Home"
 import PaginaBase from "../paginas/PaginaBase"
-import AreaLogada from "../componentes/AreaLogada"
-import Pedidos from "../componentes/AreaLogada/Pedidos"
+import Pedidos from "../paginas/Pedidos"
 
 
 const Rotas = () => {
   return (<Routes>
     <Route path='/' element={<PaginaBase />}>
       <Route path='/' element={<Home />} />
-      <Route path="/area-logada" element={<AreaLogada />}>
-        <Route path="pedidos" element={<Pedidos />}/>
+      <Route path='/area-logada' element={<AreaLogada />}>
+        <Route path="pedidos" element={<Pedidos />} />
       </Route>
-      </Route>
+    </Route>
   </Routes>)
 }
 

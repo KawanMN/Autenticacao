@@ -1,8 +1,8 @@
 import { AbBotao } from 'ds-alurabooks'
 import React, { useEffect, useState } from 'react'
 import './Pedidos.css'
-import axios from 'axios'
-import { IPedido } from '../../../interfaces/IPedido'
+import { IPedido } from '../../interfaces/IPedido'
+import http from '../../http'
 
 export default function Pedidos() {
 
@@ -12,26 +12,16 @@ export default function Pedidos() {
 
     useEffect(() => {
 
-        const token = sessionStorage.getItem('token')
 
-        axios.get<IPedido[]>('http://localhost:8000/pedidos', {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        }).then(resposta => setPedidos(resposta.data))
+        http.get<IPedido[]>('pedidos').then(resposta => setPedidos(resposta.data))
             .catch(erro => console.log(erro))
     }, [])
 
     const excluir = (pedido: IPedido) => {
-        const token = sessionStorage.getItem('token')
-        axios.delete('http://localhost:8000/pedidos/' + pedido.id, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        }).then(() => {
+        http.delete('/pedidos/' + pedido.id).then(() => {
             setPedidos(pedidos.filter(p => p.id !== pedido.id))
         })
-        .catch(erro => console.log(erro))
+            .catch(erro => console.log(erro))
     }
 
     return (
@@ -46,8 +36,8 @@ export default function Pedidos() {
                     <li>Valor total: <strong>{formatador.format(pedido.total)}</strong></li>
                     <li>Entrega realizada em: <strong>{new Date(pedido.data).toLocaleDateString()}</strong></li>
                     <li>
-                    <button className='botao' onClick={() => excluir(pedido)}>Excluir</button>
-                </li>
+                        <button className='botao' onClick={() => excluir(pedido)}>Excluir</button>
+                    </li>
                 </ul>
                 <AbBotao texto='Detalhes' />
             </div>))}

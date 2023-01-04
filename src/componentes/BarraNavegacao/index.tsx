@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import BotaoNavegacao from "../BotaoNavegacao"
 import ModalCadastroUsuario from "../ModalCadastroUsuario"
 import ModalLoginUsuario from "../ModalLoginUsuario"
@@ -12,13 +12,21 @@ const BarraNavegacao = () => {
     const [modalCadastroAberta, setModalCadastroAberta] = useState(false)
     const [ModalLoginAberta, setModalLoginAberta] = useState(false)
 
+    let navigate = useNavigate();
+
     const token = sessionStorage.getItem('token')
     const [usuarioEstaLogado, setUsuarioEstaLogado] = useState<boolean>(token != null)
 
-const aoEfetuarLogin = () => {
-    setModalLoginAberta(false)
-    setUsuarioEstaLogado(true)
-}
+    const aoEfetuarLogin = () => {
+        setModalLoginAberta(false)
+        setUsuarioEstaLogado(true)
+    }
+
+    const efetuarLogout = () => {
+        setUsuarioEstaLogado(false)
+        sessionStorage.removeItem('token')
+        navigate('/')
+    }
 
     return (<nav className="ab-navbar">
         <h1 className="logo">
@@ -69,7 +77,7 @@ const aoEfetuarLogin = () => {
                         imagemSrc={usuario}
                         onClick={() => setModalLoginAberta(true)}
                     />
-                    <ModalLoginUsuario aberta={ModalLoginAberta} aoFechar={() => setModalLoginAberta(false)} aoEfetuarLogin={aoEfetuarLogin}/>
+                    <ModalLoginUsuario aberta={ModalLoginAberta} aoFechar={() => setModalLoginAberta(false)} aoEfetuarLogin={aoEfetuarLogin} />
                 </li>
                 <li>
                     <BotaoNavegacao
@@ -85,6 +93,14 @@ const aoEfetuarLogin = () => {
                 <>
                     <li>
                         <Link to="/area-logada">Minha Conta</Link>
+                    </li>
+                    <li>
+                        <BotaoNavegacao
+                            texto="Logout"
+                            textoAltSrc="Icone representando um usuário"
+                            imagemSrc={usuario}
+                            onClick={efetuarLogout}
+                        />
                     </li>
                 </>
             }
